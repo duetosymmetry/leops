@@ -22,7 +22,6 @@
 
 (TeX-add-style-hook
  "leops"
- (function
   (lambda ()
     (TeX-run-style-hooks "article" "geometry" "amsmath" "amssymb"
                          "amsfonts" "amsthm" "xcolor" "tabularx"
@@ -36,6 +35,7 @@
      '("ifsolutions" t)
      '("ifnotsolutions" t)
      '("makeheader" 0)
+     '("exerstartswithlist" 0)
      '("bs" t)
      '("pd" 0)
      '("nn" 0)
@@ -43,9 +43,10 @@
      '("avg" t)
      '("diag" 0)
      '("sign" 0)
-     '("Tr" 0)
+     '("Tr" 0))
     (LaTeX-add-environments
+     '("exercise" ["Title (default is empty)"])
      '("solution" ["Label (default is 'Solution:')"]))
-    )))
+    ))
 
 ;;; leops.el ends here.

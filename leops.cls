@@ -137,6 +137,8 @@
 %   \end{enumerate}
 % \begin{exercise}
 
+\newcommand{\exerstartswithlist}{\leavevmode \vspace{-\baselineskip}}
+
 \newtheoremstyle{probstyle}%
   {}{}%
   {}{}%
@@ -150,7 +152,7 @@
 \newcommand{\LPS@advanceenumlev}{\advance\@enumdepth\@ne}
 \newcommand{\LPS@retractenumlev}{\advance\@enumdepth\m@ne}
 
-\AtBeginEnvironment{exercise}{\LPS@advanceenumlev}
+\AtBeginEnvironment{exercise}{\LPS@advanceenumlev\setcounter{soleq}{0}}
 \AtEndEnvironment{exercise}{\LPS@retractenumlev}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -163,9 +165,9 @@
 {\ifLPS@solutions%
 \setcounter{eqtemp}{\value{equation}}% Back up equation counter
 \setcounter{equation}{\value{soleq}}% Restore solution eq number
-\renewcommand\theequation{S\arabic{equation}}% Change the formatting
+\renewcommand\theequation{S\arabic{exercise}.\arabic{equation}}% Change the formatting
 \let\backuptheHequation\theHequation% Save the contents of the \theHequation
-\renewcommand\theHequation{S.\arabic{equation}}% For hyperref
+\renewcommand\theHequation{S.\arabic{exercise}.\arabic{equation}}% For hyperref
 \solframe% Start the solframe env; can't use \begin{} in here
 \textbf{\emph{#1}} % A paragraph started by Solution:
 \else%
