@@ -148,12 +148,17 @@
 \theoremstyle{probstyle}
 \newtheorem{exercise}{Problem}
 \numberwithin{equation}{exercise}
+\numberwithin{enumi}{exercise}
+\renewcommand\theenumi{\arabic{exercise}\alph{enumi}}
+\renewcommand\labelenumi{(\alph{enumi})}
 
 \newcommand{\LPS@advanceenumlev}{\advance\@enumdepth\@ne}
 \newcommand{\LPS@retractenumlev}{\advance\@enumdepth\m@ne}
 
-\AtBeginEnvironment{exercise}{\LPS@advanceenumlev\setcounter{soleq}{0}}
-\AtEndEnvironment{exercise}{\LPS@retractenumlev}
+%\AtBeginEnvironment{exercise}{\LPS@advanceenumlev\setcounter{soleq}{0}}
+%\AtEndEnvironment{exercise}{\LPS@retractenumlev}
+
+\AtBeginEnvironment{exercise}{\setcounter{soleq}{0}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% The following commands are for inserting solutions. They test the
