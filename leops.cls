@@ -158,7 +158,23 @@
 %\AtBeginEnvironment{exercise}{\LPS@advanceenumlev\setcounter{soleq}{0}}
 %\AtEndEnvironment{exercise}{\LPS@retractenumlev}
 
-\AtBeginEnvironment{exercise}{\setcounter{soleq}{0}}
+% \AtBeginEnvironment{exercise}{\setcounter{soleq}{0}%
+%   \addtocounter{exercise}{1}%
+%   \belowpdfbookmark{Problem \theexercise}{exer.\theexercise}%
+%   \addtocounter{exercise}{-1}}
+
+% Back up the old definition of exercise, then renew it to make a PDF
+% bookmark (and also reset soleq, but we could do that with
+% AtBeginEnvironment instead; this is needed to capture the argument)
+\let\LPS@oldexercise\exercise
+\RenewDocumentEnvironment{exercise}{ o }{%
+  \setcounter{soleq}{0}%
+  \addtocounter{exercise}{1}%
+  \belowpdfbookmark{Problem \theexercise%
+  \IfNoValueTF{#1}{.}{: #1.}}
+  {exer.\theexercise}%
+  \addtocounter{exercise}{-1}%
+  \IfNoValueTF{#1}{\LPS@oldexercise}{\LPS@oldexercise[#1]}}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% The following commands are for inserting solutions. They test the
