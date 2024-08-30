@@ -34,6 +34,7 @@
      '("hidesolutions" 0)
      '("ifsolutions" t)
      '("ifnotsolutions" t)
+     '("addexercisepath" t)
      '("makeheader" 0)
      '("exerstartswithlist" 0)
      '("bs" t)
