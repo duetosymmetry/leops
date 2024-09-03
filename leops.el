@@ -44,6 +44,7 @@
      '("avg" t)
      '("diag" 0)
      '("sign" 0)
+     '("sech" 0)
      '("Tr" 0))
     (LaTeX-add-environments
      '("exercise" ["Title (default is empty)"])

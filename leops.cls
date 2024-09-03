@@ -263,6 +263,7 @@
 
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator{\Tr}{Tr}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
