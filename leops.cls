@@ -72,6 +72,7 @@
 \RequirePackage{xcolor}
 \RequirePackage{bbm}
 \RequirePackage{slashed}
+\RequirePackage{siunitx}
 \RequirePackage{tabularx}
 
 % UTF8 always!
