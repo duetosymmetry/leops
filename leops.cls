@@ -265,6 +265,7 @@
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\sinc}{sinc}
 \DeclareMathOperator{\Tr}{Tr}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
