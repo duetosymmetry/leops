@@ -152,6 +152,7 @@
 \numberwithin{enumi}{exercise}
 \renewcommand\theenumi{\arabic{exercise}\alph{enumi}}
 \renewcommand\labelenumi{(\alph{enumi})}
+\renewcommand\labelenumii{(\roman{enumii})}
 
 \newcommand{\LPS@advanceenumlev}{\advance\@enumdepth\@ne}
 \newcommand{\LPS@retractenumlev}{\advance\@enumdepth\m@ne}
