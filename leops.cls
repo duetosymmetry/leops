@@ -251,6 +251,19 @@
 \end{center}
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\LPS@zero{0}
+\def\LPS@one{1}
+\newcommand{\points}[1]{%
+  \def\LPS@val{#1}
+  \ifx\LPS@val\LPS@zero%
+  \else%
+    \ifx\LPS@val\LPS@one%
+    [1~point]%
+    \else%
+    [#1~points]%
+    \fi%
+  \fi}
 
 % User-defined macros.
 
