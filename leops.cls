@@ -68,6 +68,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsfonts}
 \RequirePackage{amsthm}
+\RequirePackage{fifo-stack}
 \RequirePackage{mathrsfs}
 \RequirePackage{xcolor}
 \RequirePackage{bbm}
@@ -122,6 +123,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{eqtemp} % For storing ordinary eq counter
 \newcounter{soleq}  % For eq counter during solution mode
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Keeping track of points
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{LPS@problemPoints}
+\newcounter{LPS@totalPoints}
+
+\def\LPS@zero{0}
+\def\LPS@one{1}
+\newcommand{\points}[1]{%
+  \addtocounter{LPS@problemPoints}{#1}
+  \addtocounter{LPS@totalPoints}{#1}
+  \def\LPS@val{#1}
+  \ifx\LPS@val\LPS@zero%
+  \else%
+    \ifx\LPS@val\LPS@one%
+    [1~point]%
+    \else%
+    [#1~points]%
+    \fi%
+  \fi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% We will use amsthm to number our exercises (then we can number
@@ -250,20 +274,6 @@
 {\bf Due}: \LPS@psdue\\
 \end{center}
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\LPS@zero{0}
-\def\LPS@one{1}
-\newcommand{\points}[1]{%
-  \def\LPS@val{#1}
-  \ifx\LPS@val\LPS@zero%
-  \else%
-    \ifx\LPS@val\LPS@one%
-    [1~point]%
-    \else%
-    [#1~points]%
-    \fi%
-  \fi}
 
 % User-defined macros.
 

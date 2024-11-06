@@ -27,7 +27,8 @@
                          "amsfonts" "amsthm" "xcolor" "tabularx"
                          "fontenc" "inputenc" "enumitem" "fancyhdr"
                          "hyperref" "graphicx" "bm" "verbatim"
-                         "caption" "mdframed" "tikz" "siunitx")
+                         "caption" "mdframed" "tikz" "siunitx"
+                         "fifo-stack")
     (TeX-add-symbols
      '("pssetup" (TeX-arg-key-val LaTeX-leops-package-options-list))
      '("showsolutions" 0)
