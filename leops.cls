@@ -124,20 +124,19 @@
 \newcounter{eqtemp} % For storing ordinary eq counter
 \newcounter{soleq}  % For eq counter during solution mode
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Keeping track of points
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{LPS@problemPoints}
 \newcounter{LPS@totalPoints}
+\FSCreate{LPS@pointsArr}{X}
 
 \def\LPS@zero{0}
 \def\LPS@one{1}
 \newcommand{\points}[1]{%
-  \addtocounter{LPS@problemPoints}{#1}
-  \addtocounter{LPS@totalPoints}{#1}
-  \def\LPS@val{#1}
+  \addtocounter{LPS@problemPoints}{#1}%
+  \addtocounter{LPS@totalPoints}{#1}%
+  \def\LPS@val{#1}%
   \ifx\LPS@val\LPS@zero%
   \else%
     \ifx\LPS@val\LPS@one%
@@ -201,6 +200,39 @@
   {exer.\theexercise}%
   \addtocounter{exercise}{-1}%
   \IfNoValueTF{#1}{\LPS@oldexercise}{\LPS@oldexercise[#1]}}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Handle points at beginning/end of exercise
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\AtBeginEnvironment{exercise}{\setcounter{LPS@problemPoints}{0}}
+\AtEndEnvironment{exercise}{\FSUnshift{LPS@pointsArr}{\theLPS@problemPoints}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% To generate a table of problem points
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{LPS@tmpProbno}
+\newcounter{LPS@probs}
+\newcommand{\pointsTable}{%
+% See https://tex.stackexchange.com/a/76207/34063
+\setcounter{LPS@tmpProbno}{0}%
+\setcounter{LPS@probs}{\FSSize{LPS@pointsArr}}%
+\def\LPS@probNoLine{\#}%
+\def\LPS@probPtsLine{pts}%
+\FSPush{LPS@pointsArr}{}% So that we pop first, so we don't pop past end
+\whiledo{\numexpr\value{LPS@tmpProbno} < \value{LPS@probs}}{%
+  \stepcounter{LPS@tmpProbno}\FSPop{LPS@pointsArr}%
+  \edef\LPS@probNoLine{\LPS@probNoLine & \theLPS@tmpProbno}%
+  \edef\LPS@probPtsLine{\LPS@probPtsLine & \FSTop{LPS@pointsArr}}%
+}%
+\edef\LPS@probNoLine{\LPS@probNoLine & Total}%
+\edef\LPS@probPtsLine{\LPS@probPtsLine & \theLPS@totalPoints}%
+\stepcounter{LPS@probs}%
+\begin{tabularx}{1.0\linewidth}{r|*{\value{LPS@probs}}{l}}
+  \LPS@probNoLine \\
+  \LPS@probPtsLine
+\end{tabularx}%
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% The following commands are for inserting solutions. They test the

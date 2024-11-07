@@ -39,6 +39,7 @@
      '("makeheader" 0)
      '("exerstartswithlist" 0)
      '("points" t)
+     '("pointsTable" 0)
      '("bs" t)
      '("pd" 0)
      '("nn" 0)
