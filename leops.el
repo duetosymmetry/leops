@@ -5,6 +5,26 @@
 (require 'tex)
 (require 'latex)
 
+(defun LaTeX-parse-addexercisepath ()
+  "Parse the current document for \\addexercisepath commands.
+Return value is a list of paths."
+  (let ((results '())
+        (exercisepath-regex "\\\\addexercisepath{\\({\\([^}]*\\)}\\)*}")
+        (single-path-regex "{\\([^{}]*\\)}"))
+    (save-excursion
+      (save-restriction
+        (widen)
+        (goto-char (point-min))
+        (while (re-search-forward exercisepath-regex nil t)
+          (let ((full-match (match-string 0))
+                (start-pos (match-beginning 0))
+                (end-pos (match-end 0)))
+            (save-excursion
+              (goto-char start-pos)
+              (while (re-search-forward single-path-regex end-pos t)
+                (push (match-string-no-properties 1) results)))))
+        (nreverse results)))))
+
 (defvar LaTeX-leops-package-options-list
   '(;; Uni and course info
     ("schoolname")
