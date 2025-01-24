@@ -55,6 +55,7 @@ Return value is a list of paths."
      '("hidesolutions" 0)
      '("ifsolutions" t)
      '("ifnotsolutions" t)
+     '("used" t)
      '("addexercisepath" t)
      '("makeheader" 0)
      '("exerstartswithlist" 0)

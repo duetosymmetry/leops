@@ -11,27 +11,28 @@
 }
 
 % The user can \def\solutionmode{} before loading the package in order
-% to change the default value of solutions=true or false. This allows
+% to change the default value of solutions=true or false,
+% and used=true or false. This allows
 % you to use the same file, without setting solutions at all, in two
 % files, to make one file be solutions and the other only questions.
 % Default values for keyword solutions:
 %   - When the macro \solutionmode is defined before we're loaded,
-%     default false
+%     default solutions=used=false
 %  -  When the macro \ifstandalone is defined and is true,
-%     default true
-%  -  All other cases, default false
+%     default solutions=used=true
+%  -  All other cases, default solutions=used=false
 % But of course the user can pass a keyval, which overrides the default.
 \@ifundefined{solutionmode}
 {% Not forced into solutionmode... check to see if we were loaded by class standalone
   \@ifundefined{ifstandalone}
-  {\DeclareBoolOption[false]{solutions}}
+  {\DeclareBoolOption[false]{solutions}\DeclareBoolOption[false]{used}}
   {\ifstandalone
-      \DeclareBoolOption[true]{solutions}
+      \DeclareBoolOption[true]{solutions}\DeclareBoolOption[true]{used}
     \else
       % I'm not sure how we can get to this branch... but still.
-      \DeclareBoolOption[false]{solutions}
+      \DeclareBoolOption[false]{solutions}\DeclareBoolOption[false]{used}
     \fi}}
-{\DeclareBoolOption[true]{solutions}}
+{\DeclareBoolOption[true]{solutions}\DeclareBoolOption[true]{used}}
 
 \DeclareStringOption[{UNIVERSITY OF MISSISSIPPI}]{schoolname}
 \DeclareStringOption[{Department of Physics and Astronomy}]{deptname}
@@ -271,6 +272,13 @@
 
 \newcommand{\ifnotsolutions}[1]
 {\ifLPS@solutions\else#1\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The "used" command, for printing out when an exercise was used
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\used}[1]
+{\ifLPS@used[Used: #1]\else\fi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Common path addition
