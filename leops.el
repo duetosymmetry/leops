@@ -37,7 +37,9 @@ Return value is a list of paths."
     ("psnum")
     ("psdue")
     ;; Show solutions or not
-    ("solutions" ("true" "false")))
+    ("solutions" ("true" "false"))
+    ;; Show "used" commands or not
+    ("used" ("true" "false")))
   "Package options for the leops package.")
 
 (TeX-add-style-hook
