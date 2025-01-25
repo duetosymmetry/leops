@@ -44,11 +44,6 @@
 \DeclareStringOption[01]{psnum}
 \DeclareStringOption[{Monday, Jan.~31, 2022, by 11:59PM}]{psdue}
 
-
-\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
-
-\ProcessKeyvalOptions*
-
 % This allows the user to set the parameters later, for example
 % \pssetup{solutions=false}
 % or
@@ -57,6 +52,17 @@
 % shortcuts
 \newcommand{\showsolutions}{\pssetup{solutions=true}}
 \newcommand{\hidesolutions}{\pssetup{solutions=false}}
+
+\InputIfFileExists{./leops.cfg}{%
+  \typeout{Loading local ./leops.cfg}%
+}{%
+  \InputIfFileExists{../leops.cfg}{%
+    \typeout{Loading local ../leops.cfg}%
+ }{\typeout{No leops.cfg file found in this dir or one higher.}}}
+
+\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
+
+\ProcessKeyvalOptions*
 
 %\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 %\ProcessOptions\relax
