@@ -332,6 +332,14 @@
 
 \newcommand{\avg}[1]{\left\langle{}#1\right\rangle}
 
+\newcommand{\workpage}{%
+\newpage
+\ifnotsolutions{%
+\begin{center}{\sc [work space --- intentionally blank]}\end{center}
+\newpage
+}
+}
+
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\sech}{sech}

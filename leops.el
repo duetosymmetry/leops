@@ -60,6 +60,7 @@ Return value is a list of paths."
      '("used" t)
      '("addexercisepath" t)
      '("makeheader" 0)
+     '("workpage" 0)
      '("exerstartswithlist" 0)
      '("points" t)
      '("pointsTable" 0)
