@@ -344,6 +344,7 @@
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\arcsinh}{arcsinh}
 \DeclareMathOperator{\Tr}{Tr}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
