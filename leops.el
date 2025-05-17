@@ -74,6 +74,7 @@ Return value is a list of paths."
      '("sech" 0)
      '("sinc" 0)
      '("arcsinh" 0)
+     '("poiss" 2)
      '("Tr" 0))
     (LaTeX-add-environments
      '("exercise" ["Title (default is empty)"])
