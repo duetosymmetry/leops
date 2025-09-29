@@ -101,6 +101,8 @@
 \fancyhead{}
 \cfoot{Page \thepage\ of \pageref*{LastPage} }
 
+\RequirePackage{marginnote}
+
 % for good coloured links
 \RequirePackage[unicode, colorlinks, allcolors=blue!70!black, linktocpage, pdfusetitle]{hyperref}
 \RequirePackage[all]{hypcap}
@@ -284,7 +286,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\used}[1]
-{\ifLPS@used[Used: #1]\else\fi}
+{\ifLPS@used\marginnote{[Used: #1]}\else\fi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Common path addition
