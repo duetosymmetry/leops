@@ -334,6 +334,7 @@
 
 \newcommand{\avg}[1]{\left\langle{}#1\right\rangle}
 \newcommand{\poiss}[2]{\ensuremath{\left\{ #1, #2\right\}}}
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
 
 \newcommand{\workpage}{%
 \newpage
