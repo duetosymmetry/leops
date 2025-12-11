@@ -57,6 +57,7 @@ Return value is a list of paths."
      '("hidesolutions" 0)
      '("ifsolutions" t)
      '("ifnotsolutions" t)
+     '("ifLPSsolutions" 2)
      '("used" t)
      '("addexercisepath" t)
      '("makeheader" 0)

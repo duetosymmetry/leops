@@ -281,6 +281,9 @@
 \newcommand{\ifnotsolutions}[1]
 {\ifLPS@solutions\else#1\fi}
 
+\newcommand{\ifLPSsolutions}[2]
+{\ifLPS@solutions#1\else#2\fi}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The "used" command, for printing out when an exercise was used
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
